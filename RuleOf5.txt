@@ -1,0 +1,48 @@
+The Rule of Three and Rule of Five are C++ guidelines that tell you:
+
+If your class manually manages resources (like dynamic memory, file handles, sockets, etc.), you need to explicitly implement certain special member functions to handle copying, assignment, and destruction safely.
+
+1 . Destructor – frees the resource
+
+~className () {
+    delete [] arr
+}
+
+2. Copy constructor – makes a deep copy of resources when creating a new object from another
+
+className (const className &other){
+    this->x = other.x;
+}
+
+3. Copy assignment operator – makes a deep copy when assigning one object to another after
+
+className &operator= (const className &other){
+    if (this != &other) {
+        delete [] arr
+        this->x = other.x;
+    }
+    return *this;
+}
+
+4. Move constructor – steals the resource from another object (no deep copy needed)
+
+className (className &&other) noexcept
+    : arr(other.arr), cap(other.cap), last(other.last) {
+    other.arr = nullptr;
+    other.cap = 0;
+    other.last = -1;
+}
+
+5. Move assignment operator – frees current resources, then steals from another object
+
+className (className &&other) noexcept {
+    if (this != &other) {
+        delete [] arr
+        this->x = other.x;
+    }
+    other.arr = nullptr;
+    other.cap = 0;
+    other.last = -1;
+
+    return *this;
+}
