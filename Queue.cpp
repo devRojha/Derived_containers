@@ -87,14 +87,14 @@ class Queue {
     }
     // get front
     int front() const {
-        if (start%MOD == end%MOD) {
+        if (isEmpty()) {
             throw runtime_error("Queue is Empty");
         }
         return arr[start%MOD];
     }
     // pop front
     void pop() {
-        if (start%MOD == end%MOD) {
+        if (isEmpty()) {
             throw runtime_error("Queue is Empty");
         }
         start += 1;

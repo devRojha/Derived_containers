@@ -8,7 +8,7 @@ using namespace std;
  push into stack
  pop from stack
  copy constructor
- assignment copy constructor
+ assignment operator
 
 */
 
@@ -19,7 +19,7 @@ class Stack {
     public : 
     // default constructor;
     Stack() {
-        this->cap = 0;
+        this->cap = 1;
         arr = new T[cap];
         last = -1;
     }
@@ -74,7 +74,7 @@ class Stack {
     }
 
     // top
-    T top() const {
+    T top() {
         if (last == -1){
             throw runtime_error("Stack is Empty");
         }
@@ -116,20 +116,8 @@ class Stack {
 };
 
 int main () {
-    Stack<int> st;
-    st.push(1);
-    st.push(2);
-    Stack<int> tt;
-    tt = st;
-    cout << tt.size() << endl;
-    cout << st.size() << endl;
-    Stack<int> pt;
-    pt = std::move(st);
-    cout << pt.size() << endl;
-    cout << st.size() << endl;
-    while (!pt.isEmpty()) {
-        cout << pt.top()<<endl;
-        pt.pop();
-    }
+    Stack < string > st;
+    st.push("abc");
+    cout << st.top() << endl;
     return 0;
 }

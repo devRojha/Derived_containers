@@ -75,7 +75,7 @@ class My_Vector{
             curr--;
         }
     }
-    int size() {
+    int size(){
         return (curr);
     }
 
@@ -129,7 +129,8 @@ class My_Vector{
 };
 
 int main(){
-    My_Vector<int>vec(10);
-    cout<<vec[2]<<endl;
+    My_Vector<string>vec(10);
+    vec.push_back("abc");
+    cout<<vec.back()<<endl;
     return 0;
 }
